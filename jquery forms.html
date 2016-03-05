@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Jquery Tasks</title>
+	<script src="jquery.js"></script>
+	<style type="text/css">
+	body{
+		margin: 0px;
+		padding: 0px;
+	}
+	.buttons{
+		border: 4px solid #fa345c;
+    	height: auto;
+    	margin-left: 253px;
+    	margin-top: 148px;
+    	text-align: center;
+    	width: 898px;	
+    	padding: 10px;
+	}
+	#container{
+		 border: 4px solid #fa345c;
+    height: auto;
+    margin-left: 253px;
+    position: relative;
+    text-align: center;
+    width: 918px;
+    position: relative;
+    padding-bottom: 44px;
+    padding-top: 27px;
+      }
+   #next .tabs{
+   	   padding: 6px;
+    border: 2px solid #000;
+    margin: 6px;
+    overflow: hidden;
+    position: absolute;
+    bottom: 0px;
+    right: 78px;
+}
+	</style>
+	<script type="text/javascript">
+
+function validate(bttype){
+	var firstname = $('#firstname').val();
+var addr = $('#addr').val();
+var mob = $('#mob').val();
+var state = $('#state').val();
+var username = $('#username').val();
+var email = $('#email').val();
+var name_regex = /^[a-zA-Z]+$/;
+var email_regex = /^[\w\-\.\+]+\@[a-zA-Z0-9\.\-]+\.[a-zA-z0-9]{2,4}$/;
+var add_regex = /^[0-9a-zA-Z]+$/;
+var mob_regex = /^[0-9]+$/;
+
+if (!firstname.match(name_regex) || firstname.length == 0) {
+$('#p1').text("For your name please use alphabets only"); 
+$("#firstname").focus();
+return false;
+}
+else if (!(username.length >= 6 && username.length <= 8) || username.length == 0) {
+$('#p2').text("Please enter above 6characters"); 
+$("#username").focus();
+return false;
+}
+
+else if (!email.match(email_regex) || email.length == 0) {
+$('#p3').text("Please enter a valid email address");
+$("#email").focus();
+return false;
+}
+
+else if (state == "Please Choose") {
+$('#p4').text("Please Choose any one option"); 
+$("#state").focus();
+return false;
+}
+
+else if (!addr.match(add_regex) || addr.length == 0) {
+$('#p5').text("For Address please use numbers and letters"); 
+$("#addr").focus();
+return false;
+}
+
+else if (!mob.match(mob_regex) || mob.length == 0) {
+$('#p6').text("Please enter a valid Mobile Number");
+$("#zip").focus();
+return false;
+} else {
+	if(bttype=="sub"){
+	var success= 1;	
+	return success;
+	}
+	else{
+		var success1= 2;
+		return success1;
+	}
+}
+}
+$(document).ready(function() {
+	$("#div2").hide();
+	$("#div3").hide();
+$('#submit').click(function() {
+	var submit='sub';
+    var suc=validate(submit);
+
+});
+	
+   $("#next1").click(function(){
+   	var submit='next';
+    var suc=validate(submit);
+    if(suc==2){
+   	$("#div1").hide();
+   	$("#div3").hide();
+   	$("#div2").show();
+   }
+	});
+
+  
+
+   $('p').click(function(){
+			$(this).hide();
+		});
+   $('#mouse').hover(function(){
+			alert("This is mouseenter alert");
+		});
+   $('#mouse1').click(function(){
+				$('#new').css({
+					"color":"blue",
+					});
+			});
+   $("#next2").click(function(){
+   	$("#div2").hide();
+   	$("#div1").hide();
+   	$("#div3").show();
+
+   });
+});
+
+</script>
+
+</head>
+<body>
+<div class="buttons">
+	<a class="tabs" id="showdiv1">First Tab</a> |
+	<a class="tabs" id="showdiv2">Second Tab</a> | 
+ 	<a class="tabs" id="showdiv3">Third Tab</a>
+</div>
+	<div id="container">
+
+		<div id="div1">
+			<h1></h1>
+				<form action="" method="post">
+						<label>Full Name:</label>
+						<input id='firstname' type='text'>
+							<p id="p1"></p> 
+						<label>Username(6-8 characters):</label>
+						<input id='username' type='text' 
+							<p id="p2"></p>
+						<label>Email:</label>
+						<input id='email' type='text' >
+							<p id="p3"></p> <label>State:</label>
+						<select id='state'>
+								<option>Please Choose</option>
+								<option>America</option>
+								<option>Australia</option>
+								<option>Sweden</option>
+								<option>Africa</option>
+						</select>
+							<p id="p4"></p> 
+						<label>Address:</label>
+						<input id='addr' type='text'>
+							<p id="p5"></p> 
+						<label>Mobile No:</label>
+						<input id='mob' type='text'>
+							<p id="p6"></p> 
+						<input type="button" name= "submit" id="submit" value="submit">
+				</form>
+				<div id="next"><button class="tabs" id="next1">Next -></button></div>
+		</div>
+
+		<div id="div2" >
+			<h1>Jquery Controls</h1><hr>
+			<p id="first"> Hey Destroy me by clicking </p>
+<p id="second"> Dont Click me,am Afraid</p> 
+<p id="mouse">
+This is the Example for mouse enter
+</p>
+<button id="mouse1">Change me Blue</button>
+<p id="new">This is the example for css properties</p>
+<div id="next"><button class="tabs" id="next2">Next -></button></div>
+		</div>
+
+
+
+
+
+		<div id="div3">
+			<h1>Tables</h1>
+		</div>
+
+
+
+
+	</div>
+
+</body>
+</html>
